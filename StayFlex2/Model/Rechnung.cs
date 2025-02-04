@@ -1,4 +1,4 @@
-﻿namespace StayFlex.Model
+﻿namespace StayFlex2.Model
 {
     public class Rechnung
     {
