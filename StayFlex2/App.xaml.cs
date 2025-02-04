@@ -1,14 +1,11 @@
-﻿using System.Configuration;
-using System.Data;
+﻿using StayFlex2;
+using System;
 using System.Windows;
 
-namespace StayFlex2
+namespace HotelManagementApp
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
-    }
 
+    }
 }

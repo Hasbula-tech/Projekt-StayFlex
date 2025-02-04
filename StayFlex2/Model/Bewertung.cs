@@ -1,7 +1,10 @@
-﻿namespace StayFlex2.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace StayFlex2.Model
 {
     public class Bewertung
     {
+        [Key]  // Primärschlüssel definieren
         public int BewertungsID { get; set; }
         public int GastID { get; set; }
         public Gast Gast { get; set; }

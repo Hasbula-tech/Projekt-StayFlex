@@ -1,7 +1,10 @@
-﻿namespace StayFlex2.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace StayFlex2.Model
 {
     public class Gast
     {
+        [Key]
         public int GastID { get; set; }
         public string Name { get; set; }
         public string Adresse { get; set; }

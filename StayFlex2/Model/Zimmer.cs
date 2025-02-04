@@ -1,7 +1,10 @@
-﻿namespace StayFlex2.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace StayFlex2.Model
 {
     public class Zimmer
     {
+        [Key]
         public int ZimmerID { get; set; }
         public string Kategorie { get; set; }
         public double Preis { get; set; }
