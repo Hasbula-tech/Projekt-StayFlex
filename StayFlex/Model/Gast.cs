@@ -11,6 +11,7 @@ namespace StayFlex2.Model
         public string Geschlecht { get; set; }
         public DateTime Geburtsdatum { get; set; }
         public bool Stammgast { get; set; }
+        public string Email { get; set; }
 
         public List<Buchung> Buchungen { get; set; } = new List<Buchung>();
     }
