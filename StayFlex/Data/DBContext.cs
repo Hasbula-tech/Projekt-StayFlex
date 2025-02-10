@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StayFlex2.Model;
+using StayFlex.Model;
 
 public class HotelDbContext : DbContext
 {

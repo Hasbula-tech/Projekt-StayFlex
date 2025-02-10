@@ -1,8 +1,8 @@
-﻿<Window x:Class="StayFlex2.MainWindow"
+﻿<Window x:Class="StayFlex.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        xmlns:local="clr-namespace:StayFlex2.View"
-        xmlns:irgendwas="clr-namespace:StayFlex2.View"
+        xmlns:local="clr-namespace:StayFlex.View"
+        xmlns:irgendwas="clr-namespace:StayFlex.View"
         Title="FunRest" Height="700" Width="700"
         MinWidth="700" MinHeight="700" MaxHeight="700" MaxWidth="700" 
         Background="#1E1E1E" Foreground="White" WindowStartupLocation="CenterScreen">

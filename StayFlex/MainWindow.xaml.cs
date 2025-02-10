@@ -1,4 +1,4 @@
-﻿using StayFlex2.View;
+﻿using StayFlex.View;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StayFlex2
+namespace StayFlex
 {
   /// <summary>
   /// Interaction logic for MainWindow.xaml

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StayFlex2.Model
+namespace StayFlex.Model
 {
     public class Zimmer
     {

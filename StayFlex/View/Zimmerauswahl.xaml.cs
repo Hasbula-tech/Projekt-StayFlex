@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 
-namespace StayFlex2.View
+namespace StayFlex.View
 {
     public partial class Zimmerauswahl : UserControl
     {

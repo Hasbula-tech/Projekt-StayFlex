@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace StayFlex2.Migrations
+namespace StayFlex.Migrations
 {
     [DbContext(typeof(HotelDbContext))]
     partial class HotelDbContextModelSnapshot : ModelSnapshot
@@ -21,7 +21,7 @@ namespace StayFlex2.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("StayFlex2.Model.Bewertung", b =>
+            modelBuilder.Entity("StayFlex.Model.Bewertung", b =>
                 {
                     b.Property<int>("BewertungsID")
                         .ValueGeneratedOnAdd()
@@ -51,7 +51,7 @@ namespace StayFlex2.Migrations
                     b.ToTable("Bewertungen");
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Buchung", b =>
+            modelBuilder.Entity("StayFlex.Model.Buchung", b =>
                 {
                     b.Property<int>("BuchungID")
                         .ValueGeneratedOnAdd()
@@ -86,7 +86,7 @@ namespace StayFlex2.Migrations
                     b.ToTable("Buchungen");
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Gast", b =>
+            modelBuilder.Entity("StayFlex.Model.Gast", b =>
                 {
                     b.Property<int>("GastID")
                         .ValueGeneratedOnAdd()
@@ -117,7 +117,7 @@ namespace StayFlex2.Migrations
                     b.ToTable("Gaeste");
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Hotel", b =>
+            modelBuilder.Entity("StayFlex.Model.Hotel", b =>
                 {
                     b.Property<int>("HotelID")
                         .ValueGeneratedOnAdd()
@@ -145,7 +145,7 @@ namespace StayFlex2.Migrations
                     b.ToTable("Hotels");
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Rechnung", b =>
+            modelBuilder.Entity("StayFlex.Model.Rechnung", b =>
                 {
                     b.Property<int>("RechnungsID")
                         .ValueGeneratedOnAdd()
@@ -170,7 +170,7 @@ namespace StayFlex2.Migrations
                     b.ToTable("Rechnungen");
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Zimmer", b =>
+            modelBuilder.Entity("StayFlex.Model.Zimmer", b =>
                 {
                     b.Property<int>("ZimmerID")
                         .ValueGeneratedOnAdd()
@@ -202,15 +202,15 @@ namespace StayFlex2.Migrations
                     b.ToTable("Zimmer");
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Bewertung", b =>
+            modelBuilder.Entity("StayFlex.Model.Bewertung", b =>
                 {
-                    b.HasOne("StayFlex2.Model.Gast", "Gast")
+                    b.HasOne("StayFlex.Model.Gast", "Gast")
                         .WithMany()
                         .HasForeignKey("GastID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StayFlex2.Model.Hotel", "Hotel")
+                    b.HasOne("StayFlex.Model.Hotel", "Hotel")
                         .WithMany("Bewertungen")
                         .HasForeignKey("HotelID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -221,15 +221,15 @@ namespace StayFlex2.Migrations
                     b.Navigation("Hotel");
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Buchung", b =>
+            modelBuilder.Entity("StayFlex.Model.Buchung", b =>
                 {
-                    b.HasOne("StayFlex2.Model.Gast", "Gast")
+                    b.HasOne("StayFlex.Model.Gast", "Gast")
                         .WithMany("Buchungen")
                         .HasForeignKey("GastID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StayFlex2.Model.Zimmer", "Zimmer")
+                    b.HasOne("StayFlex.Model.Zimmer", "Zimmer")
                         .WithMany()
                         .HasForeignKey("ZimmerID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -240,20 +240,20 @@ namespace StayFlex2.Migrations
                     b.Navigation("Zimmer");
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Rechnung", b =>
+            modelBuilder.Entity("StayFlex.Model.Rechnung", b =>
                 {
-                    b.HasOne("StayFlex2.Model.Buchung", "Buchung")
+                    b.HasOne("StayFlex.Model.Buchung", "Buchung")
                         .WithOne("Rechnung")
-                        .HasForeignKey("StayFlex2.Model.Rechnung", "BuchungID")
+                        .HasForeignKey("StayFlex.Model.Rechnung", "BuchungID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Buchung");
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Zimmer", b =>
+            modelBuilder.Entity("StayFlex.Model.Zimmer", b =>
                 {
-                    b.HasOne("StayFlex2.Model.Hotel", "Hotel")
+                    b.HasOne("StayFlex.Model.Hotel", "Hotel")
                         .WithMany("Zimmer")
                         .HasForeignKey("HotelID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -262,18 +262,18 @@ namespace StayFlex2.Migrations
                     b.Navigation("Hotel");
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Buchung", b =>
+            modelBuilder.Entity("StayFlex.Model.Buchung", b =>
                 {
                     b.Navigation("Rechnung")
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Gast", b =>
+            modelBuilder.Entity("StayFlex.Model.Gast", b =>
                 {
                     b.Navigation("Buchungen");
                 });
 
-            modelBuilder.Entity("StayFlex2.Model.Hotel", b =>
+            modelBuilder.Entity("StayFlex.Model.Hotel", b =>
                 {
                     b.Navigation("Bewertungen");
 
