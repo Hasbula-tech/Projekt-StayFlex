@@ -9,16 +9,14 @@
             <TextBlock Text="Zimmer auswählen" Foreground="White" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
 
             <!-- Zimmeroptionen -->
-            <ListBox x:Name="ZimmerListBox" FontSize="16">
-                <ListBoxItem Content="Einzelzimmer"/>
+            <ListBox x:Name="ZimmerListBox" FontSize="16" Margin="0,30,0,0">
+                <ListBoxItem Content="Einzelzimmer" Selected="ListBoxItem_Selected"/>
                 <ListBoxItem Content="Doppelzimmer"/>
-                <ListBoxItem Content="Suite"/>
-                <ListBoxItem Content="Familienzimmer"/>
             </ListBox>
 
             <!-- Bestätigungsbutton -->
-            <Button Content="Auswahl bestätigen" Background="#3498DB" Foreground="White" Margin="0,10,0,0" Padding="5"
-                    />
-        </StackPanel>
+                <Button Content="Bestätigen" FontSize="16" Background="Orange" Foreground="Black" 
+                    Click="CloseZimmerAuswahl" HorizontalAlignment="Center" Width="100" Margin="0,10,0,0"/>
+    </StackPanel>
     </Border>
 </UserControl>

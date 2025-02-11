@@ -3,12 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:local="clr-namespace:StayFlex.View"
         xmlns:irgendwas="clr-namespace:StayFlex.View"
-        Title="FunRest" Height="700" Width="700"
-        MinWidth="700" MinHeight="700" MaxHeight="700" MaxWidth="700" 
+        Title="FunRest" Height="900" Width="900"
+        MinWidth="900" MinHeight="900" MaxHeight="900" MaxWidth="900" 
         Background="#1E1E1E" Foreground="White" WindowStartupLocation="CenterScreen">
   <!-- Ressourcen für modernes Styling -->
 
-  <Grid Margin="10">
+  <Window.Resources>
+    <Storyboard x:Key="FadeInStoryboard">
+      <DoubleAnimation Storyboard.TargetName="ZimmerOverlay"
+                         Storyboard.TargetProperty="Opacity"
+                         From="0" To="1" Duration="0:0:0.3"/>
+    </Storyboard>
+    <Storyboard x:Key="FadeOutStoryboard">
+      <DoubleAnimation Storyboard.TargetName="ZimmerOverlay"
+                         Storyboard.TargetProperty="Opacity"
+                         From="1" To="0" Duration="0:0:0.3"/>
+    </Storyboard>
+  </Window.Resources>
+
+
+  <Grid
+    Margin="10">
 
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto"/>
@@ -57,152 +72,133 @@
       </Popup>
 
       <!-- Main Content -->
-      <StackPanel Margin="10">
-        <!-- Image Section -->
-
-        <!-- Booking Section -->
-        <!-- Image Section -->
-        <Border Background="#DCE3E9" Height="200" CornerRadius="10">
-          <Image Source="Bilder/hotel.jpg" Stretch="UniformToFill" />
-
-        </Border>
-
-        <!-- Booking Section -->
-        <Grid Margin="0">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
-          </Grid.RowDefinitions>
+      <Grid>
 
 
-          <Grid Margin="10">
-            <!-- Spalten für Startdatum, "bis" und Enddatum -->
+        <Grid.RowDefinitions>
+
+
+        </Grid.RowDefinitions>
+        <StackPanel Margin="10">
+
+          <!-- Image Section -->
+          <Border Background="#DCE3E9" Height="200" CornerRadius="10">
+            <Image Source="Bilder/hotel.jpg" Stretch="UniformToFill" />
+          </Border>
+
+          <!-- Booking Section -->
+          <Grid Margin="0">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+
+            <Grid Margin="10">
+              <!-- Spalten für Startdatum, "bis" und Enddatum -->
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+
+              <!-- Startdatum-Picker -->
+              <Border Grid.Column="0" Width="170" CornerRadius="5" Background="#2C3E50" BorderBrush="Orange" 
+              BorderThickness="4" Padding="3" Margin="0,0,5,0">
+                <Grid>
+                  <ComboBox x:Name="CustomDatePickerComboBoxStart" FontSize="18" Background="#2C3E50" 
+                    Foreground="Black" IsEditable="True" Text="Startdatum" 
+                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                    Height="35" IsDropDownOpen="False" PreviewMouseDown="OpenCalendarStart" 
+                    BorderThickness="0"/>
+                  <Popup x:Name="CalendarPopupStart" PlacementTarget="{Binding ElementName=CustomDatePickerComboBoxStart}" 
+                 StaysOpen="True" IsOpen="False" Placement="Bottom">
+                    <Border BorderBrush="Orange" BorderThickness="2" CornerRadius="5" Background="White">
+                      <Calendar x:Name="CustomCalendarStart" SelectedDatesChanged="Calendar_SelectedDateChangedStart"/>
+                    </Border>
+                  </Popup>
+                </Grid>
+              </Border>
+
+              <!-- "bis" Text -->
+              <TextBlock Grid.Column="1" Text="bis" FontSize="18" VerticalAlignment="Center" 
+                 HorizontalAlignment="Center" Foreground="White" Margin="10,0"/>
+
+              <!-- Enddatum-Picker -->
+              <Border Grid.Column="2" Width="170" CornerRadius="5" Background="#2C3E50" 
+              BorderBrush="Orange" BorderThickness="4" Padding="3" Margin="0,0,5,0">
+                <Grid>
+                  <ComboBox x:Name="CustomDatePickerComboBoxEnd" FontSize="18" Background="#2C3E50" 
+                    Foreground="Black" IsEditable="True" Text="Enddatum" 
+                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                    Height="35" IsDropDownOpen="False" PreviewMouseDown="OpenCalendarEnd" 
+                    BorderThickness="0"/>
+                  <Popup x:Name="CalendarPopupEnd" PlacementTarget="{Binding ElementName=CustomDatePickerComboBoxEnd}" 
+                 StaysOpen="True" IsOpen="False" Placement="Bottom">
+                    <Border BorderBrush="Orange" BorderThickness="2" CornerRadius="5" Background="White">
+                      <Calendar x:Name="CustomCalendarEnd" SelectedDatesChanged="Calendar_SelectedDateChangedEnd"/>
+                    </Border>
+                  </Popup>
+                </Grid>
+              </Border>
+            </Grid>
+          </Grid>
+
+          <!-- Button Section -->
+          <Grid Margin="0,20,0,0">
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="*" />
-              <ColumnDefinition Width="auto" />
               <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- Startdatum-Picker -->
-            <Border Grid.Column="0" 
-            Width="170" 
-            CornerRadius="5" 
-            Background="#2C3E50" 
-            BorderBrush="Orange" 
-            BorderThickness="4" 
-            Padding="3" 
-            Margin="0,0,5,0">
-              <Grid>
-                <ComboBox x:Name="CustomDatePickerComboBoxStart" 
-                      FontSize="18" 
-                      Background="#2C3E50" 
-                      Foreground="Black" 
-                      IsEditable="True" 
-                      Text="Startdatum" 
-                      VerticalContentAlignment="Center" 
-                      HorizontalContentAlignment="Center"
-                      Height="35"
-                      IsDropDownOpen="False"  
-                      PreviewMouseDown="OpenCalendarStart" 
-                      BorderThickness="0"/>
-                <Popup x:Name="CalendarPopupStart" PlacementTarget="{Binding ElementName=CustomDatePickerComboBoxStart}" 
-                   StaysOpen="True" IsOpen="False" Placement="Bottom">
-                  <Border BorderBrush="Orange" BorderThickness="2" CornerRadius="5" Background="White">
-                    <Calendar x:Name="CustomCalendarStart" SelectedDatesChanged="Calendar_SelectedDateChangedStart"/>
-                  </Border>
-                </Popup>
-              </Grid>
+            <!-- Zimmer Button -->
+
+            <StackPanel Margin="10">
+
+              <TextBlock x:Name="AusgewähltesZimmerText" Text="Kein Zimmer ausgewählt" 
+                       FontSize="18" Margin="0,10" Foreground="White" HorizontalAlignment="Center"/>
+              
+
+              <Border x:Name="ZimmerAuswahlButton" CornerRadius="10" BorderBrush="Orange" BorderThickness="4" Padding="2" 
+                      Margin="20,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Zimmer" FontSize="16" Background="#2C3E50" Foreground="White" 
+                        Width="120" Height="40" BorderThickness="0" Click="OpenZimmerAuswahl"/>
+                </Border>
+              
+            </StackPanel>
+
+            <!-- Layer 2: Overlay (direkt eingebunden) -->
+            <Border x:Name="ZimmerOverlay" Background="#00000066" Visibility="Collapsed">
+              <Border Background="#2C3E50" CornerRadius="10" BorderBrush="Orange" 
+                    BorderThickness="4" Padding="15" Width="250" Height="160" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                  <TextBlock Text="Zimmerauswahl" FontSize="24" Foreground="White" 
+                               HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                  <!-- Zimmerliste -->
+                  <ListBox x:Name="ZimmerListe" Background="White" Height="45">
+                    <ListBoxItem Content="Einzelzimmer" />
+                    <ListBoxItem Content="Doppelzimmer" />
+                  </ListBox>
+
+                  <!-- Bestätigungs-Button -->
+                  <Button Content="Auswahl bestätigen" FontSize="16" Background="Orange" 
+                            Foreground="White" Width="200" Margin="0,10,0,0" 
+                            HorizontalAlignment="Center" Click="ZimmerAuswahlBestätigen"/>
+                </StackPanel>
+              </Border>
             </Border>
 
-            <!-- "bis" Text -->
-            <TextBlock Grid.Column="1" 
-               Text="bis" 
-               FontSize="18" 
-               VerticalAlignment="Center" 
-               HorizontalAlignment="Center" 
-               Foreground="White" 
-               Margin="10,0"/>
-
-            <!-- Enddatum-Picker -->
-            <Border Grid.Column="2" 
-            Width="170" 
-            CornerRadius="5" 
-            Background="#2C3E50" 
-            BorderBrush="Orange" 
-            BorderThickness="4" 
-            Padding="3" 
-            Margin="0,0,5,0">
-              <Grid>
-                <ComboBox x:Name="CustomDatePickerComboBoxEnd" 
-                      FontSize="18" 
-                      Background="#2C3E50" 
-                      Foreground="Black" 
-                      IsEditable="True" 
-                      Text="Enddatum" 
-                      VerticalContentAlignment="Center" 
-                      HorizontalContentAlignment="Center"
-                      Height="35"
-                      IsDropDownOpen="False"  
-                      PreviewMouseDown="OpenCalendarEnd" 
-                      BorderThickness="0"/>
-                <Popup x:Name="CalendarPopupEnd" PlacementTarget="{Binding ElementName=CustomDatePickerComboBoxEnd}" 
-                   StaysOpen="True" IsOpen="False" Placement="Bottom">
-                  <Border BorderBrush="Orange" BorderThickness="2" CornerRadius="5" Background="White">
-                    <Calendar x:Name="CustomCalendarEnd" SelectedDatesChanged="Calendar_SelectedDateChangedEnd"/>
-                  </Border>
-                </Popup>
-              </Grid>
+            <!-- Buchen Button -->
+            <Border Grid.Column="1" CornerRadius="10" BorderBrush="Orange" BorderThickness="4" Padding="2" 
+            Margin="20,47,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+              <Button Content="Buchen" FontSize="16" Background="#2C3E50" Foreground="White" 
+              Width="120" Height="40" BorderThickness="0"/>
             </Border>
           </Grid>
-        </Grid>
 
+        </StackPanel>
 
-
-        <Border Grid.Column="1" 
-                        CornerRadius="10" 
-                        BorderBrush="Orange" 
-                        BorderThickness="4" 
-                        Margin="150,0,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        Padding="2">
-
-          <Button x:Name="ZimmerAuswahlButton" 
-                            Content="Zimmer" 
-                            FontSize="16" 
-                            Background="#2C3E50" 
-                            Foreground="White" 
-                            Width="100" 
-                            Height="35" 
-                            Click="OpenZimmerAuswahl" 
-                            BorderThickness="0"
-                            HorizontalAlignment="Center"
-                    VerticalAlignment="Center"/>
-
-
-        </Border>
-
-        <Border Grid.Column="2" 
-                        CornerRadius="10" 
-                        BorderBrush="Orange" 
-                        BorderThickness="4" 
-                        Margin="0,0,0,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Padding="2">
-
-          <Button  
-                            Content="Buchen" 
-                            FontSize="16" 
-                            Background="#2C3E50" 
-                            Foreground="White" 
-                            Width="100" 
-                            Height="35" 
-                            Click="OpenZimmerAuswahl" 
-                            BorderThickness="0"/>
-        </Border>
-
-      </StackPanel>
-
+      </Grid>
 
 
       <TextBlock Text="Rezensionen:" FontSize="16" FontWeight="Bold" Margin="0,20,0,10"/>
@@ -217,6 +213,10 @@
         </StackPanel>
       </ScrollViewer>
     </StackPanel>
+
+
+    <ContentControl x:Name="ZimmerAuswahlContent" Visibility="Collapsed" Margin="0,20,0,0"/>
+
 
 
   </Grid>

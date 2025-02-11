@@ -6,6 +6,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -59,7 +60,22 @@ namespace StayFlex
 
     private void OpenZimmerAuswahl(object sender, RoutedEventArgs e)
     {
+      ZimmerOverlay.Visibility = Visibility.Visible;
+    }
 
+
+    public void CloseZimmerAuswahl(object sender, RoutedEventArgs e)
+    {
+      ZimmerAuswahlContent.Visibility = Visibility.Collapsed;
+    }
+
+    private void ZimmerAuswahlBestätigen(object sender, RoutedEventArgs e)
+    {
+      if (ZimmerListe.SelectedItem is ListBoxItem selectedItem)
+      {
+        AusgewähltesZimmerText.Text = $"Ausgewählt: {selectedItem.Content}";
+      }
+      ZimmerOverlay.Visibility = Visibility.Collapsed;
     }
 
     private void ZimmerSelectedHandler(string selectedZimmer)
