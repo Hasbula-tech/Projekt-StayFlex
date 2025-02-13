@@ -21,7 +21,6 @@
     </Storyboard>
   </Window.Resources>
 
-
   <Grid
     Margin="10">
 
@@ -29,9 +28,6 @@
       <RowDefinition Height="Auto"/>
       <RowDefinition Height="AUto"/>
     </Grid.RowDefinitions>
-
-
-
 
     <!-- Header -->
     <DockPanel Background="#2C3E50" Height="100" DockPanel.Dock="Top" >
@@ -54,8 +50,6 @@
 
     </DockPanel>
 
-
-
     <StackPanel Grid.Row="1">
       <Popup x:Name="BurgerMenuPopup" Placement="Relative" PlacementTarget="{Binding ElementName=BurgerMenuButton}" 
                StaysOpen="False" HorizontalOffset="10" VerticalOffset="55">
@@ -73,11 +67,7 @@
 
       <!-- Main Content -->
       <Grid>
-
-
         <Grid.RowDefinitions>
-
-
         </Grid.RowDefinitions>
         <StackPanel Margin="10">
 
@@ -143,7 +133,9 @@
           </Grid>
 
           <!-- Button Section -->
+          
           <Grid Margin="0,20,0,0">
+            
             <Grid.ColumnDefinitions>
               <ColumnDefinition Width="*" />
               <ColumnDefinition Width="*" />
@@ -155,14 +147,14 @@
 
               <TextBlock x:Name="AusgewähltesZimmerText" Text="Kein Zimmer ausgewählt" 
                        FontSize="18" Margin="0,10" Foreground="White" HorizontalAlignment="Center"/>
-              
+
 
               <Border x:Name="ZimmerAuswahlButton" CornerRadius="10" BorderBrush="Orange" BorderThickness="4" Padding="2" 
                       Margin="20,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Content="Zimmer" FontSize="16" Background="#2C3E50" Foreground="White" 
                         Width="120" Height="40" BorderThickness="0" Click="OpenZimmerAuswahl"/>
-                </Border>
-              
+              </Border>
+
             </StackPanel>
 
             <!-- Layer 2: Overlay (direkt eingebunden) -->
@@ -187,7 +179,7 @@
                 </StackPanel>
               </Border>
             </Border>
-
+            
             <!-- Buchen Button -->
             <Border Grid.Column="1" CornerRadius="10" BorderBrush="Orange" BorderThickness="4" Padding="2" 
             Margin="20,47,10,0" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -195,12 +187,8 @@
               Width="120" Height="40" BorderThickness="0"/>
             </Border>
           </Grid>
-
         </StackPanel>
-
       </Grid>
-
-
       <TextBlock Text="Rezensionen:" FontSize="16" FontWeight="Bold" Margin="0,20,0,10"/>
       <ScrollViewer Height="250">
         <StackPanel>
@@ -213,11 +201,6 @@
         </StackPanel>
       </ScrollViewer>
     </StackPanel>
-
-
     <ContentControl x:Name="ZimmerAuswahlContent" Visibility="Collapsed" Margin="0,20,0,0"/>
-
-
-
   </Grid>
 </Window>
