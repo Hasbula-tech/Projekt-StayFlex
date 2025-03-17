@@ -1147,8 +1147,8 @@ msgstr ""
 "Ports frei sind"
 
 #: uTomcat.pas:232 uTomcat.pas:255 uTomcat.pas:297
-msgid "Check the \"/xampp/tomcat/logs\" folder for more information"
-msgstr "Überprüfe den Ordner \"/xampp/tomcat/logs\" für weitere Informationen"
+msgid "Check the \"C:/Users/Daniel_Knoll/Documents/Repos/Projekt-StayFlex/Funrest/xampp/tomcat/logs\" folder for more information"
+msgstr "Überprüfe den Ordner \"C:/Users/Daniel_Knoll/Documents/Repos/Projekt-StayFlex/Funrest/xampp/tomcat/logs\" für weitere Informationen"
 
 #: uTomcat.pas:253
 msgid "%s Service Uninstall stopped with errors, return code: %d"

@@ -1,4 +1,7 @@
 ###### ApacheFriends XAMPP Version 8.2.12 ######
+ 
+Hinweis: Die Portable Version enth‰lt nicht den FileZilla FTP und den Mercury Mail Server. Die Installation als Dienste sind ebenfalls deaktiviert.
+
 
 Wichtig! PHP in diesem Paket ben√∂tigt die Microsoft Visual C++ 2019 Redistributable Erweiterung von
 http://www.microsoft.com/en-us/download/. Bitte stellen Sie sicher das die VC++ 2019

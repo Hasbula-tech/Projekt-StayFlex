@@ -820,8 +820,8 @@ msgid "improper privileges, a crash, or a shutdown by another method."
 msgstr "improper privileges, a crash, or a shutdown by another method."
 
 #: uApache.pas:452
-msgid "Check the \"/xampp/apache/logs/error.log\" file"
-msgstr "Check the \"/xampp/apache/logs/error.log\" file"
+msgid "Check the \"C:/Users/Daniel_Knoll/Documents/Repos/Projekt-StayFlex/Funrest/xampp/apache/logs/error.log\" file"
+msgstr "Check the \"C:/Users/Daniel_Knoll/Documents/Repos/Projekt-StayFlex/Funrest/xampp/apache/logs/error.log\" file"
 
 #: uApache.pas:453 uMySQL.pas:368
 msgid "and the Windows Event Viewer for more clues"
@@ -1168,8 +1168,8 @@ msgid "Error: MySQL shutdown unexpectedly."
 msgstr "Error: MySQL shutdown unexpectedly."
 
 #: uMySQL.pas:367
-msgid "Check the \"/xampp/mysql/data/mysql_error.log\" file"
-msgstr "Check the \"/xampp/mysql/data/mysql_error.log\" file"
+msgid "Check the \"C:/Users/Daniel_Knoll/Documents/Repos/Projekt-StayFlex/Funrest/xampp/mysql/data/mysql_error.log\" file"
+msgstr "Check the \"C:/Users/Daniel_Knoll/Documents/Repos/Projekt-StayFlex/Funrest/xampp/mysql/data/mysql_error.log\" file"
 
 #: uMySQL.pas:396
 msgid "Autostart aborted: MySQL is already running"
@@ -1279,8 +1279,8 @@ msgstr ""
 "Make sure you have Java JDK or JRE installed and the required ports are free"
 
 #: uTomcat.pas:215 uTomcat.pas:238 uTomcat.pas:280
-msgid "Check the \"/xampp/tomcat/logs\" folder for more information"
-msgstr "Check the \"/xampp/tomcat/logs\" folder for more information"
+msgid "Check the \"C:/Users/Daniel_Knoll/Documents/Repos/Projekt-StayFlex/Funrest/xampp/tomcat/logs\" folder for more information"
+msgstr "Check the \"C:/Users/Daniel_Knoll/Documents/Repos/Projekt-StayFlex/Funrest/xampp/tomcat/logs\" folder for more information"
 
 #: uTomcat.pas:236
 msgid "Tomcat Service Uninstall stopped with errors, return code: %d"
