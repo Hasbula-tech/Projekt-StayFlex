@@ -1,0 +1,225 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+header {
+    background: #2C3E50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: #007bff;
+    border-radius: 5px;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px;
+    background: url('hotel.jpg') no-repeat center center/cover;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.home-header {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.button {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background: #0056b3;
+}
+
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.form-container input, .form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.select-style {
+    appearance: none;
+    background: white;
+    cursor: pointer;
+}
+
+.bewertungen-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: left;
+    margin-right: 20px;
+}
+
+.bewertung {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.bewertung:last-child {
+    border-bottom: none;
+}
+
+.bewertung p {
+    margin: 5px 0;
+}
+
+.bewertung-abgeben {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bewertung-abgeben textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.admin-dashboard {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.admin-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.admin-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.admin-link {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 10px;
+}
+
+.admin-link h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.admin-link p {
+    font-size: 14px;
+    color: #555;
+}
+
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #2C3E50;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+}
