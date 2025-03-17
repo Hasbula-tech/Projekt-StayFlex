@@ -15,7 +15,9 @@
 
 # Mono auto generated files
 mono_crash.*
-
+git add -f Funrest/xampp/apache/bin/
+git add -f Funrest/xampp/mysql/bin/
+git add -f Funrest/xampp/bin/
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
