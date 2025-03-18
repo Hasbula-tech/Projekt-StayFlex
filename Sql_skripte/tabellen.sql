@@ -2,14 +2,6 @@ CREATE DATABASE IF NOT EXISTS hotelmanagement;
 USE hotelmanagement;
 
 
--- Tabelle Hotel
-CREATE TABLE Hotel (
-    HotelID INT AUTO_INCREMENT PRIMARY KEY,
-    Name VARCHAR(255) NOT NULL,
-    Adresse VARCHAR(255) NOT NULL,
-    Stadt VARCHAR(100) NOT NULL,
-    Sterne INT CHECK (Sterne BETWEEN 1 AND 5)
-);
 
 -- Tabelle Zimmer
 CREATE TABLE Zimmer (
@@ -17,9 +9,7 @@ CREATE TABLE Zimmer (
     Kategorie VARCHAR(50) NOT NULL,
     Preis DECIMAL(10, 2) NOT NULL,
     Typ VARCHAR(50) NOT NULL,  -- Einzelzimmer/Doppelzimmer
-    Verfuegbarkeit BOOLEAN NOT NULL DEFAULT TRUE,
-    HotelID INT,
-    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
+    Verfuegbarkeit BOOLEAN NOT NULL DEFAULT TRUE
 );
 
 -- Tabelle User
@@ -68,10 +58,8 @@ CREATE TABLE Rechnung (
 CREATE TABLE Bewertung (
     BewertungsID INT AUTO_INCREMENT PRIMARY KEY,
     UserID INT,
-    HotelID INT,
     Text TEXT,
     SterneBewertung INT CHECK (SterneBewertung BETWEEN 1 AND 5),
     Freigeschaltet BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (UserID) REFERENCES User(UserID),
-    FOREIGN KEY (HotelID) REFERENCES Hotel(HotelID)
+    FOREIGN KEY (UserID) REFERENCES User(UserID)
 );
