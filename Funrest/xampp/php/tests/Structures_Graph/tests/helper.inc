@@ -1,5 +1,5 @@
 <?php
-if ('C:\xampp\php\pear' == '@'.'php_dir'.'@') {
+if ('"C:\Users\Daniel_Knoll\Documents\Repos\Projekt-StayFlex\Funrest\xampp\php\pear' == '@'.'php_dir'.'@') {
     // This package hasn't been installed.
     // Adjust path to ensure includes find files in working directory.
     set_include_path(dirname(dirname(__FILE__))

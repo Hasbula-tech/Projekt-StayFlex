@@ -51,10 +51,10 @@ Step 2: If installation ends successfully, start the Apache 2 with
 Step 3: Start your browser and type http://127.0.0.1 or http://localhost in the location bar. You should see our pre-made
 start page with certain examples and test screens.
 
-Step 4: PHP (with mod_php, as *.php), Perl by default with *.cgi, SSI with *.shtml are all located in => C:\xampp\htdocs\.
+Step 4: PHP (with mod_php, as *.php), Perl by default with *.cgi, SSI with *.shtml are all located in => "C:\Users\Daniel_Knoll\Documents\Repos\Projekt-StayFlex\Funrest\xampp\htdocs\.
 Examples:
-- C:\xampp\htdocs\test.php => http://localhost/test.php
-- C:\xampp\htdocs\myhome\test.php => http://localhost/myhome/test.php
+- "C:\Users\Daniel_Knoll\Documents\Repos\Projekt-StayFlex\Funrest\xampp\htdocs\test.php => http://localhost/test.php
+- "C:\Users\Daniel_Knoll\Documents\Repos\Projekt-StayFlex\Funrest\xampp\htdocs\myhome\test.php => http://localhost/myhome/test.php
 
 Step 5: XAMPP UNINSTALL? Simply remove the "xampp" Directory.
 But before please shutdown the apache and mysql.
@@ -132,7 +132,7 @@ in XAMPP:
 
 * MYSQL NOTES:
 
-(1) The MySQL server can be started by double-clicking (executing) mysql_start.bat. This file can be found in the same folder you installed XAMPP in, most likely this will be C:\xampp\.
+(1) The MySQL server can be started by double-clicking (executing) mysql_start.bat. This file can be found in the same folder you installed XAMPP in, most likely this will be "C:\Users\Daniel_Knoll\Documents\Repos\Projekt-StayFlex\Funrest\xampp\.
 The exact path to this file is X:\xampp\mysql_start.bat, where "X" indicates the letter of the drive you unpacked XAMPP into. This batch file starts the MySQL server in console mode. The first intialization might take a few minutes.
 Do not close the DOS window or you'll crash the server! To stop the server, please use mysql_stop.bat, which is located in the same directory. Or use the fine XAMPP Control Panel with double-click on "xampp-control.exe" for all these things!
 
@@ -145,7 +145,7 @@ Do not close the DOS window or you'll crash the server! To stop the server, plea
 If you want to set a password for MySQL access, please use of MySQL Admin.
 To set the passwort "secret" for the user "root", type the following:
 
-	C:\xampp\mysql\bin\mysqladmin.exe -u root -p secret
+	"C:\Users\Daniel_Knoll\Documents\Repos\Projekt-StayFlex\Funrest\xampp\mysql\bin\mysqladmin.exe -u root -p secret
 
 After changing the password you'll have to reconfigure phpMyAdmin to use the new password, otherwise it won't be able to access the databases. To do that, open the file config.inc.php in \xampp\phpmyadmin\ and edit the following lines:
 

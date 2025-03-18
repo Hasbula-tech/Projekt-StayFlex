@@ -1,6 +1,6 @@
 ###### ApacheFriends XAMPP Version 8.2.12 ######
  
-Hinweis: Die Portable Version enth�lt nicht den FileZilla FTP und den Mercury Mail Server. Die Installation als Dienste sind ebenfalls deaktiviert.
+Hinweis: Die Portable Version enth�lt nicht den FileZilla FTP und den Mercury Mail Server. Die Installation als Dienste sind ebenfalls deaktiviert.
 
 
 Wichtig! PHP in diesem Paket benötigt die Microsoft Visual C++ 2019 Redistributable Erweiterung von
@@ -49,7 +49,7 @@ Stoppen Sie MySQL mit dem Control Panel (xampp-control.exe) oder wahlweise mit =
 
 Schritt 4: Öffne deinen Browser und gebe http://127.0.0.1 oder http://localhost ein. Danach gelangst du zu den zahlreichen ApacheFriends-Beispielen auf Ihrem lokalen Server.
 
-Schritt 5: Das Root-Verzeichnis (Hauptdokumente) für HTTP (oft HTML) ist => C:\xampp\htdocs. PHP kann die Endungen  *.php, *.phtml haben, *.shtml für SSI, *.cgi für CGI (z. B.: Perl).
+Schritt 5: Das Root-Verzeichnis (Hauptdokumente) für HTTP (oft HTML) ist => "C:\Users\Daniel_Knoll\Documents\Repos\Projekt-StayFlex\Funrest\xampp\htdocs. PHP kann die Endungen  *.php, *.phtml haben, *.shtml für SSI, *.cgi für CGI (z. B.: Perl).
 
 Schritt 6: XAMPP DEINSTALLIEREN?
 Einfach das "XAMPP"-Verzeichnis löschen. Vorher aber alle Server stoppen
@@ -143,9 +143,9 @@ Für eine Zugriff in PHP sähe das also aus:
 Ein Passwort für "root" könnt ihr über den MySQL-Admin in der Eingabeaufforderung
 setzen. Z. B.:
 
-	C:\xampp\mysql\bin\mysqladmin.exe -u root -p geheim
+	"C:\Users\Daniel_Knoll\Documents\Repos\Projekt-StayFlex\Funrest\xampp\mysql\bin\mysqladmin.exe -u root -p geheim
 
-Wichtig: Nach dem Einsetzen eines neuen Passwortes für Root muss auch phpMyAdmin informiert werden! Das geschieht über die Datei "config.inc.php"; zu finden als C:\xampp\phpmyadmin\config.inc.php. Dort also folgenden
+Wichtig: Nach dem Einsetzen eines neuen Passwortes für Root muss auch phpMyAdmin informiert werden! Das geschieht über die Datei "config.inc.php"; zu finden als "C:\Users\Daniel_Knoll\Documents\Repos\Projekt-StayFlex\Funrest\xampp\phpmyadmin\config.inc.php. Dort also folgenden
 Zeilen editieren:
 
 	$cfg['Servers'][$i]['user']            = 'root';   // MySQL User
