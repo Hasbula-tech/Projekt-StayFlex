@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bewertungen - FUNREST Hotel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gästebewertungen</h1>
+        <nav>
+            <ul>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="buchung.php">Zimmer buchen</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="bewertungen.php">Bewertungen</a></li>
+                <li><a href="admin.php">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="bewertungen-container">
+            <h2>Das sagen unsere Gäste</h2>
+            <div class="bewertung">
+                <p><strong>Max Mustermann</strong> ⭐⭐⭐⭐⭐</p>
+                <p>„Ein großartiges Hotel mit exzellentem Service! Ich komme gerne wieder.“</p>
+            </div>
+            <div class="bewertung">
+                <p><strong>Anna Schmidt</strong> ⭐⭐⭐⭐☆</p>
+                <p>„Sehr schönes Ambiente, das Frühstück war fantastisch!“</p>
+            </div>
+            <div class="bewertung">
+                <p><strong>Felix Berger</strong> ⭐⭐⭐☆☆</p>
+                <p>„Gute Lage, aber das WLAN war etwas langsam.“</p>
+            </div>
+        </section>
+        
+        <section class="bewertung-abgeben">
+            <h2>Teilen Sie Ihre Erfahrung</h2>
+            <form action="bewertung_speichern.php" method="POST" class="form-container">
+                <label for="name">Ihr Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Ihr Name">
+                
+                <label for="rating">Ihre Bewertung:</label>
+                <select id="rating" name="rating" class="select-style">
+                    <option value="5">⭐⭐⭐⭐⭐ (5 Sterne)</option>
+                    <option value="4">⭐⭐⭐⭐☆ (4 Sterne)</option>
+                    <option value="3">⭐⭐⭐☆☆ (3 Sterne)</option>
+                    <option value="2">⭐⭐☆☆☆ (2 Sterne)</option>
+                    <option value="1">⭐☆☆☆☆ (1 Stern)</option>
+                </select>
+                
+                <label for="kommentar">Ihr Kommentar:</label>
+                <textarea id="kommentar" name="kommentar" required placeholder="Teilen Sie Ihre Erfahrung mit uns..." rows="4"></textarea>
+                
+                <button type="submit" class="button">Bewertung abgeben</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 FUNREST Hotel | Alle Rechte vorbehalten</p>
+    </footer>
+</body>
+</html>

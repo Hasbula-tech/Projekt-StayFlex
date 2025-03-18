@@ -212,6 +212,73 @@ nav ul li a:hover {
     color: #555;
 }
 
+/* Styling für die Buchungstabelle */
+table {
+    width: 100%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+thead {
+    background: #2C3E50;
+    color: white;
+    font-size: 18px;
+}
+
+thead th {
+    padding: 15px;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s ease;
+}
+
+tbody tr:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+tbody td {
+    padding: 12px 15px;
+    color: #333;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Buttons */
+.delete-button {
+    display: inline-block;
+    background: #E74C3C;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background: #C0392B;
+}
+
+/* Responsive Tabelle */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
 
 footer {
     text-align: center;
