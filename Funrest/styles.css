@@ -4,7 +4,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
-    line-height: 1.6;
+    /* line-height: 1.6; */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -12,17 +12,26 @@ body {
 }
 
 main {
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
+}
+/* Nur für die Startseite */
+body.home main {
+    display: flex;
+    flex-direction: column; /* Nur für die Home-Seite: Reihenfolge bleibt vertikal */
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 30px;
+    width: 100%;
 }
 
 header {
     background: #2C3E50;
     color: white;
-    padding: 20px 0;
+    padding: 10px 0;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
@@ -33,7 +42,8 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
+    margin-top: 5px;
 }
 
 nav ul li {
@@ -44,7 +54,7 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
-    padding: 10px 15px;
+    padding: 8px 12px;
     transition: all 0.3s ease;
 }
 
@@ -52,8 +62,19 @@ nav ul li a:hover {
     background: #007bff;
     border-radius: 5px;
 }
-
+/* Container für Hero + Features */
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
 .hero {
+    flex: 2;
+    min-width: 400px;
     text-align: center;
     padding: 80px;
     background: url('hotel.jpg') no-repeat center center/cover;
@@ -61,6 +82,115 @@ nav ul li a:hover {
     font-size: 28px;
     font-weight: bold;
 }
+
+.features {
+    flex: 1;
+    max-width: 400px;
+    padding: 30px;
+    background: linear-gradient(135deg, #2C3E50, #34495E);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-height: 375px;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features ul li {
+    font-size: 18px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.features ul li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+/* Responsive Anpassung für kleinere Bildschirme */
+@media (max-width: 768px) {
+    .features {
+        padding: 20px;
+    }
+    
+    .features ul li {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+/* Home-Bewertungen Box */
+.home-bewertungen {
+    width: 100%;
+    max-width: 600px; /* Schmaler machen */
+    height: 100%; /* Höhe so, dass nur eine Bewertung sichtbar ist */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Wrapper für die Animation */
+.home-bewertungen-wrapper {
+    width: 100%;
+    height: 100px; /* Gleiche Höhe wie die Box */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Der Slider für die Bewertungen */
+.home-bewertungen-slider {
+    display: flex;
+    flex-direction: column; /* Stellt sicher, dass Bewertungen untereinander sind */
+    position: absolute;
+    width: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+/* Einzelne Bewertung */
+.home-bewertungen-item {
+    width: 100%;
+    padding: 10px;
+    background: rgba(44, 62, 80, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Wenn die Bewertung sichtbar ist */
+.home-bewertungen-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
 
 .home-header {
     background: rgba(0, 0, 0, 0.6);
@@ -282,7 +412,7 @@ tbody tr:last-child {
 
 footer {
     text-align: center;
-    padding: 15px;
+    /* padding: 15px; */
     background: #2C3E50;
     color: white;
     position: relative;

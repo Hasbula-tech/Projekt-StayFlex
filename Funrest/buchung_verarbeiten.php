@@ -9,7 +9,7 @@ $conn = new mysqli($servername, $username, $password, $dbname, 3306);
 
 // Fehlerprüfung
 if ($conn->connect_error) {
-    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
+    die(json_encode(["success" => false, "message" => "Verbindung fehlgeschlagen"]));
 }
 
 // Daten aus dem Formular holen
@@ -22,7 +22,7 @@ $abreise = $_POST['abreise'];
 
 // Validierung
 if (empty($name) || empty($email) || empty($zimmerkategorie) || empty($zimmerTyp) || empty($anreise) || empty($abreise)) {
-    echo "<script>alert('Bitte alle Felder ausfüllen!'); window.location.href='buchung.php';</script>";
+    echo json_encode(["success" => false, "message" => "Bitte alle Felder ausfüllen!"]);
     exit();
 }
 
@@ -59,10 +59,18 @@ if ($result->num_rows > 0) {
     $zimmer_id = $zimmer['ZimmerID'];
     $preis = $zimmer['Preis'];
 
+    // Differenz der Tage berechnen
+    $start = new DateTime($anreise);
+    $end = new DateTime($abreise);
+    $tage = $start->diff($end)->days;
+    
+    // Endpreis berechnen
+    $gesamtpreis = $preis * $tage;
+
     // Buchung speichern
     $sql_buchung = "INSERT INTO Buchung (UserID, ZimmerID, Buchungsdatum, CheckIn, CheckOut, Kosten) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt_buchung = $conn->prepare($sql_buchung);
-    $stmt_buchung->bind_param("iisssd", $user_id, $zimmer_id, $buchungsdatum, $anreise, $abreise, $preis);
+    $stmt_buchung->bind_param("iisssd", $user_id, $zimmer_id, $buchungsdatum, $anreise, $abreise, $gesamtpreis);
     $stmt_buchung->execute();
 
     // Zimmer als belegt markieren
@@ -71,11 +79,23 @@ if ($result->num_rows > 0) {
     $stmt_update->bind_param("i", $zimmer_id);
     $stmt_update->execute();
 
-    echo "<script>alert('Buchung erfolgreich!'); window.location.href='buchung.php';</script>";
+    // JSON-Daten für Rechnung zurückgeben
+    header('Content-Type: application/json');
+echo json_encode([
+    "success" => true,
+    "name" => $name,
+    "zimmer" => $zimmerkategorie,
+    "buchungszeitraum" => $buchungsdatum,
+    "anreise" => $anreise,
+    "abreise" => $abreise,
+    "kosten" => (float) $gesamtpreis, // Explizite Umwandlung in Float
+    "email" => $email,
+    "userid" => $user_id
+]);
+exit();
 } else {
-    echo "<script>alert('Kein verfügbares Zimmer in dieser Kategorie gefunden.'); window.location.href='buchung.php';</script>";
+    echo json_encode(["success" => false, "message" => "Kein verfügbares Zimmer in dieser Kategorie gefunden."]);
 }
 
-// Verbindung schließen
 $conn->close();
 ?>
