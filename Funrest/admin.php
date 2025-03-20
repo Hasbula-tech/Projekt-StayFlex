@@ -7,17 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Admin-Dashboard</h1>
-        <nav>
-            <ul>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="buchung.php">Zimmer buchen</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="bewertungen.php">Bewertungen</a></li>
-                <li><a href="admin.php">Admin</a></li>
-            </ul>
-        </nav>
+<header>
+        <h1>Willkommen im FUNREST Hotel</h1>
+        <?php include 'nav.php'; ?>
     </header>
     
     <main>

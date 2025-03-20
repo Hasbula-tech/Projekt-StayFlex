@@ -2,6 +2,7 @@
 session_start();
 include 'db.php';
 
+
 // Prüfen, ob der Nutzer eingeloggt ist
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
@@ -31,7 +32,11 @@ $conn->close();
 </head>
 <body>
 
-    <?php include 'nav.php'; ?>
+<header>
+        <h1>Willkommen im FUNREST Hotel</h1>
+        <?php include 'nav.php'; ?>
+    </header>
+    
 
     <main>
         <section class="profil-container">
