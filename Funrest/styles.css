@@ -21,7 +21,7 @@ main {
 }
 
 main h1, main h2, main p, main a {
-    color: white !important;
+    color: white;
 }
 
 /* Overlay für bessere Lesbarkeit */
@@ -179,6 +179,9 @@ nav ul li a:hover {
     flex-direction: column;
     justify-content: center;
 }
+.home-bewertungen h2 {
+    color: black;
+}
 
 /* Wrapper für die Animation */
 .home-bewertungen-wrapper {
@@ -186,6 +189,11 @@ nav ul li a:hover {
     height: 100px; /* Gleiche Höhe wie die Box */
     overflow: hidden;
     position: relative;
+    color: black;
+}
+
+.home-bewertungen-item p {
+    color: black;
 }
 
 /* Der Slider für die Bewertungen */
@@ -208,6 +216,7 @@ nav ul li a:hover {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    color: black;
 }
 
 /* Wenn die Bewertung sichtbar ist */
@@ -504,6 +513,7 @@ footer {
     padding: 0;
     margin-top: 15px;
     width: 100%;
+}
 /* Belegte Tage (Rot) */
 .unavailable-day {
     background-color: #dc3545 !important; /* Rot für belegte Tage */
