@@ -18,17 +18,11 @@ main {
     justify-content: center;
     padding: 20px;
     background: url('hotel.jpg') no-repeat center center/cover;
-    color: white;  /* Alle Texte in `main` weiß machen */
-}
-
-main h1, main h2, main a {
-    color: white !important;
 }
 
 main h1, main h2, main p, main a {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    color: white !important;
 }
-
 
 /* Overlay für bessere Lesbarkeit */
 main::before {
@@ -134,7 +128,6 @@ nav ul li a:hover {
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: white;
 }
 
 .features ul {
@@ -345,7 +338,7 @@ nav ul li a:hover {
 }
 
 .admin-card {
-    background: white;
+    background: #2C3E50;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
