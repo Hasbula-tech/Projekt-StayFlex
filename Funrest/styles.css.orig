@@ -1,0 +1,569 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    /* line-height: 1.6; */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+/* Nur für die Startseite */
+body.home main {
+    display: flex;
+    flex-direction: column; /* Nur für die Home-Seite: Reihenfolge bleibt vertikal */
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 30px;
+    width: 100%;
+}
+
+header {
+    background: #2C3E50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: #007bff;
+    border-radius: 5px;
+}
+/* Container für Hero + Features */
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+.hero {
+    flex: 2;
+    min-width: 400px;
+    text-align: center;
+    padding: 80px;
+    background: url('hotel.jpg') no-repeat center center/cover;
+    border-radius: 10px;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.features {
+    flex: 1;
+    max-width: 400px;
+    padding: 30px;
+    background: linear-gradient(135deg, #2C3E50, #34495E);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-height: 375px;
+}
+
+.features h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features ul li {
+    font-size: 18px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.features ul li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+}
+
+/* Responsive Anpassung für kleinere Bildschirme */
+@media (max-width: 768px) {
+    .features {
+        padding: 20px;
+    }
+    
+    .features ul li {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+/* Home-Bewertungen Box */
+.home-bewertungen {
+    width: 100%;
+    max-width: 1180px; /* Schmaler machen */
+    height: 100%; /* Höhe so, dass nur eine Bewertung sichtbar ist */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Wrapper für die Animation */
+.home-bewertungen-wrapper {
+    width: 100%;
+    height: 100px; /* Gleiche Höhe wie die Box */
+    overflow: hidden;
+    position: relative;
+}
+
+/* Der Slider für die Bewertungen */
+.home-bewertungen-slider {
+    display: flex;
+    flex-direction: column; /* Stellt sicher, dass Bewertungen untereinander sind */
+    position: absolute;
+    width: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+/* Einzelne Bewertung */
+.home-bewertungen-item {
+    width: 100%;
+    padding: 10px;
+    background: rgba(44, 62, 80, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Wenn die Bewertung sichtbar ist */
+.home-bewertungen-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+.home-header {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.button {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background: #0056b3;
+}
+
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-container label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.form-container input, .form-container select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.select-style {
+    appearance: none;
+    background: white;
+    cursor: pointer;
+}
+
+.bewertungen-container {
+    width: 100%;
+    max-width: 620px;
+    padding: 20px;
+    background: #2C3E50;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: left;
+    margin-right: 50px;
+}
+
+.bewertung {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.bewertung:last-child {
+    border-bottom: none;
+}
+
+.bewertung p {
+    margin: 5px 0;
+}
+
+.bewertung-abgeben {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: #2C3E50;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bewertung-abgeben textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.admin-dashboard {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.admin-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.admin-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.admin-link {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 10px;
+}
+
+.admin-link h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.admin-link p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Styling für die Buchungstabelle */
+table {
+    width: 100%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.bewertung-abgeben h2 {
+    color: white;
+}
+
+
+thead {
+    background: #2C3E50;
+    color: white;
+    font-size: 18px;
+}
+
+thead th {
+    padding: 15px;
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background 0.3s ease;
+}
+
+tbody tr:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+tbody td {
+    padding: 12px 15px;
+    color: #333;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Buttons */
+.delete-button {
+    display: inline-block;
+    background: #E74C3C;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background: #C0392B;
+}
+
+/* Responsive Tabelle */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+
+footer {
+    text-align: center;
+    /* padding: 15px; */
+    background: #2C3E50;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: auto;
+}
+
+<<<<<<< HEAD
+
+/* Profil Container */
+.profil-container {
+    width: 100%;
+    max-width: 500px;
+    background: #2C3E50;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Profil-Überschrift */
+.profil-container h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Profil-Informationen */
+.profil-container p {
+    font-size: 18px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: left;
+}
+
+/* Profil-Aktionen */
+.profil-container h3 {
+    margin-top: 20px;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Liste der Aktionen */
+.profil-container ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.profil-container ul li {
+    margin-bottom: 10px;
+}
+
+/* Links für Aktionen */
+.profil-container ul li a {
+    display: block;
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.profil-container ul li a:hover {
+    background: #0056b3;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .profil-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .profil-container p {
+        font-size: 16px;
+    }
+}
+=======
+/* Belegte Tage (Rot) */
+.unavailable-day {
+    background-color: #dc3545 !important; /* Rot für belegte Tage */
+    color: white !important;
+    border-radius: 5px;
+    pointer-events: none; /* Klicks deaktivieren */
+    opacity: 0.7;
+}
+
+/* Verfügbare Tage (Grün) */
+.available-day {
+    background-color: #28a745 !important; /* Grün für freie Tage */
+    color: white !important;
+    border-radius: 5px;
+}
+
+/* Hover-Effekt für freie Tage */
+.available-day:hover {
+    background-color: #218838 !important;
+}
+
+/* Flatpickr Gesamt-Design */
+.flatpickr-calendar {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Heute markieren */
+.flatpickr-day.today {
+    border: 2px solid #007bff;
+    font-weight: bold;
+}
+
+/* Wenn ein Datum ausgewählt wurde */
+.flatpickr-day.selected {
+    background: #007bff !important;
+    color: white !important;
+}
+
+.flatpickr-disabled {
+    background-color: #dc3545 !important;
+    color: white !important;
+    border-radius: 5px;
+    opacity: 0.7;
+}
+
+.flatpickr-disabled:hover {
+    opacity: 1;
+    background-color: #dc3545 !important;
+}
+
+>>>>>>> 025c1d44813d23a5a8fe3ba7c296a56ebf1afef5
