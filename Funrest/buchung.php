@@ -36,10 +36,11 @@
                 </select>
                 
                 <label for="anreise">Anreisedatum:</label>
-                <input type="date" id="anreise" name="anreise" required>
-                
+                <input type="text" id="anreise" name="anreise" placeholder="Anreise auswählen" required>
+
                 <label for="abreise">Abreisedatum:</label>
-                <input type="date" id="abreise" name="abreise" required>
+                <input type="text" id="abreise" name="abreise" placeholder="Abreise auswählen" required>
+
                 
                 <button type="submit" class="button">Buchen</button>
             </form>
@@ -52,6 +53,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 <script src="generatepdf.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!-- Falls du deutsche Sprache willst -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/de.js"></script>
+<script src="verfuegbarkeit.js"></script>
 
 </body>
 </html>

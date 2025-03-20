@@ -1,9 +1,9 @@
 <?php
 // Datenbankverbindung herstellen
 $servername = "localhost";
-$username = "root"; // Dein MySQL-User
-$password = "admin"; // Falls du ein Passwort hast, hier eintragen
-$dbname = "funrest"; // Deine Datenbank
+$username = "root";
+$password = "admin";
+$dbname = "funrest";
 
 $conn = new mysqli($servername, $username, $password, $dbname, 3306);
 
@@ -45,56 +45,67 @@ if ($result->num_rows > 0) {
     $user_id = $conn->insert_id;
 }
 
-// Zimmer anhand Kategorie & Typ abrufen
-$sql_zimmer = "SELECT ZimmerID, Preis FROM Zimmer WHERE Kategorie=? AND Typ=? AND Verfuegbarkeit=1 LIMIT 1";
+// **Zimmer anhand Kategorie & Typ abrufen, aber nur, wenn es noch nicht gebucht ist**
+$sql_zimmer = "
+    SELECT ZimmerID, Preis FROM Zimmer 
+    WHERE Kategorie = ? 
+      AND Typ = ?
+      AND ZimmerID NOT IN (
+          SELECT ZimmerID FROM Buchung 
+          WHERE (CheckIn <= ? AND CheckOut > ?) 
+          OR (CheckIn < ? AND CheckOut >= ?) 
+          OR (CheckIn >= ? AND CheckOut <= ?)
+      )
+    LIMIT 1";
+
 $stmt = $conn->prepare($sql_zimmer);
-$stmt->bind_param("ss", $zimmerkategorie, $zimmerTyp);
+$stmt->bind_param("ssssssss", 
+    $zimmerkategorie, $zimmerTyp, 
+    $abreise, $anreise,  // Zeitraum-Check
+    $anreise, $abreise,  
+    $anreise, $abreise   
+);
 $stmt->execute();
 $result = $stmt->get_result();
 
 // Prüfen, ob ein Zimmer verfügbar ist
 if ($result->num_rows > 0) {
-    $buchungsdatum = date("Y-m-d"); // aktuelles Datum
+    $buchungsdatum = date("Y-m-d");
     $zimmer = $result->fetch_assoc();
     $zimmer_id = $zimmer['ZimmerID'];
-    $preis = $zimmer['Preis'];
+    $preis_pro_tag = $zimmer['Preis'];
 
-    // Differenz der Tage berechnen
+    // Berechnung der Tage
     $start = new DateTime($anreise);
     $end = new DateTime($abreise);
     $tage = $start->diff($end)->days;
-    
-    // Endpreis berechnen
-    $gesamtpreis = $preis * $tage;
 
-    // Buchung speichern
-    $sql_buchung = "INSERT INTO Buchung (UserID, ZimmerID, Buchungsdatum, CheckIn, CheckOut, Kosten) VALUES (?, ?, ?, ?, ?, ?)";
+    // Endpreis berechnen
+    $gesamtpreis = $preis_pro_tag * $tage;
+
+    // **Buchung speichern**
+    $sql_buchung = "INSERT INTO Buchung (UserID, ZimmerID, Buchungsdatum, CheckIn, CheckOut, Kosten) 
+                    VALUES (?, ?, ?, ?, ?, ?)";
     $stmt_buchung = $conn->prepare($sql_buchung);
     $stmt_buchung->bind_param("iisssd", $user_id, $zimmer_id, $buchungsdatum, $anreise, $abreise, $gesamtpreis);
     $stmt_buchung->execute();
 
-    // Zimmer als belegt markieren
-    $sql_update = "UPDATE Zimmer SET Verfuegbarkeit=0 WHERE ZimmerID=?";
-    $stmt_update = $conn->prepare($sql_update);
-    $stmt_update->bind_param("i", $zimmer_id);
-    $stmt_update->execute();
-
-    // JSON-Daten für Rechnung zurückgeben
+    // **JSON-Daten für Rechnung zurückgeben**
     header('Content-Type: application/json');
-echo json_encode([
-    "success" => true,
-    "name" => $name,
-    "zimmer" => $zimmerkategorie,
-    "buchungszeitraum" => $buchungsdatum,
-    "anreise" => $anreise,
-    "abreise" => $abreise,
-    "kosten" => (float) $gesamtpreis, // Explizite Umwandlung in Float
-    "email" => $email,
-    "userid" => $user_id
-]);
-exit();
+    echo json_encode([
+        "success" => true,
+        "name" => $name,
+        "zimmer" => $zimmerkategorie,
+        "buchungszeitraum" => "$anreise bis $abreise",
+        "anreise" => $anreise,
+        "abreise" => $abreise,
+        "kosten" => (float) $gesamtpreis,
+        "email" => $email,
+        "userid" => $user_id
+    ]);
+    exit();
 } else {
-    echo json_encode(["success" => false, "message" => "Kein verfügbares Zimmer in dieser Kategorie gefunden."]);
+    echo json_encode(["success" => false, "message" => "Kein verfügbares Zimmer in diesem Zeitraum gefunden."]);
 }
 
 $conn->close();

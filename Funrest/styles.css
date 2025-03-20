@@ -78,6 +78,7 @@ nav ul li a:hover {
     text-align: center;
     padding: 80px;
     background: url('hotel.jpg') no-repeat center center/cover;
+    border-radius: 10px;
     color: white;
     font-size: 28px;
     font-weight: bold;
@@ -139,7 +140,7 @@ nav ul li a:hover {
 /* Home-Bewertungen Box */
 .home-bewertungen {
     width: 100%;
-    max-width: 600px; /* Schmaler machen */
+    max-width: 1180px; /* Schmaler machen */
     height: 100%; /* Höhe so, dass nur eine Bewertung sichtbar ist */
     background: white;
     border-radius: 10px;
@@ -477,6 +478,56 @@ footer {
     padding: 0;
     margin-top: 15px;
     width: 100%;
+/* Belegte Tage (Rot) */
+.unavailable-day {
+    background-color: #dc3545 !important; /* Rot für belegte Tage */
+    color: white !important;
+    border-radius: 5px;
+    pointer-events: none; /* Klicks deaktivieren */
+    opacity: 0.7;
+}
+
+/* Verfügbare Tage (Grün) */
+.available-day {
+    background-color: #28a745 !important; /* Grün für freie Tage */
+    color: white !important;
+    border-radius: 5px;
+}
+
+/* Hover-Effekt für freie Tage */
+.available-day:hover {
+    background-color: #218838 !important;
+}
+
+/* Flatpickr Gesamt-Design */
+.flatpickr-calendar {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Heute markieren */
+.flatpickr-day.today {
+    border: 2px solid #007bff;
+    font-weight: bold;
+}
+
+/* Wenn ein Datum ausgewählt wurde */
+.flatpickr-day.selected {
+    background: #007bff !important;
+    color: white !important;
+}
+
+.flatpickr-disabled {
+    background-color: #dc3545 !important;
+    color: white !important;
+    border-radius: 5px;
+    opacity: 0.7;
+}
+
+.flatpickr-disabled:hover {
+    opacity: 1;
+    background-color: #dc3545 !important;
 }
 
 .profil-container ul li {
