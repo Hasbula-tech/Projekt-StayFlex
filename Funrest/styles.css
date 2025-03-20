@@ -134,6 +134,7 @@ nav ul li a:hover {
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: white;
 }
 
 .features ul {
@@ -283,14 +284,14 @@ nav ul li a:hover {
 
 .bewertungen-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 620px;
     padding: 20px;
-    background: white;
+    background: #2C3E50;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     text-align: left;
-    margin-right: 20px;
+    margin-right: 50px;
 }
 
 .bewertung {
@@ -310,7 +311,7 @@ nav ul li a:hover {
     width: 100%;
     max-width: 600px;
     padding: 20px;
-    background: white;
+    background: #2C3E50;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 30px;
@@ -388,6 +389,11 @@ table {
     overflow: hidden;
 }
 
+.bewertung-abgeben h2 {
+    color: white;
+}
+
+
 thead {
     background: #2C3E50;
     color: white;
@@ -455,6 +461,56 @@ footer {
     margin-top: auto;
 }
 
+
+/* Profil Container */
+.profil-container {
+    width: 100%;
+    max-width: 500px;
+    background: #2C3E50;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Profil-Überschrift */
+.profil-container h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Profil-Informationen */
+.profil-container p {
+    font-size: 18px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: left;
+}
+
+/* Profil-Aktionen */
+.profil-container h3 {
+    margin-top: 20px;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Liste der Aktionen */
+.profil-container ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    width: 100%;
 /* Belegte Tage (Rot) */
 .unavailable-day {
     background-color: #dc3545 !important; /* Rot für belegte Tage */
@@ -507,3 +563,35 @@ footer {
     background-color: #dc3545 !important;
 }
 
+.profil-container ul li {
+    margin-bottom: 10px;
+}
+
+/* Links für Aktionen */
+.profil-container ul li a {
+    display: block;
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.profil-container ul li a:hover {
+    background: #0056b3;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .profil-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .profil-container p {
+        font-size: 16px;
+    }
+}

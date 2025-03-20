@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("isis", $user_id, $name, $rating, $kommentar);
 
     if ($stmt->execute()) {
-        echo "Bewertung erfolgreich gespeichert und muss freigegeben werden!";
+        echo "Bewertung erfolgreich gespeichert und muss freigegeben werden! <a href='bewertungen.php'>Zurück zu Bewertungen</a>";
     } else {
         echo "Fehler beim Speichern der Bewertung: " . $stmt->error;
     }

@@ -1,3 +1,13 @@
+<?php
+session_start();
+include 'db.php';
+
+// Freigegebene Bewertungen abrufen
+$sql = "SELECT name, rating, kommentar FROM bewertungen WHERE is_approved = TRUE ORDER BY created_at DESC";
+$result = $conn->query($sql);
+?>
+
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -7,39 +17,39 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Gästebewertungen</h1>
-        <nav>
-            <ul>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="buchung.php">Zimmer buchen</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="bewertungen.php">Bewertungen</a></li>
-                <li><a href="admin.php">Admin</a></li>
-            </ul>
-        </nav>
+<header>
+        <h1>Willkommen im FUNREST Hotel</h1>
+        <?php include 'nav.php'; ?>
     </header>
     
     <main>
-        <section class="bewertungen-container">
-            <h2>Das sagen unsere Gäste</h2>
-            <div class="bewertung">
-                <p><strong>Max Mustermann</strong> ⭐⭐⭐⭐⭐</p>
-                <p>„Ein großartiges Hotel mit exzellentem Service! Ich komme gerne wieder.“</p>
-            </div>
-            <div class="bewertung">
-                <p><strong>Anna Schmidt</strong> ⭐⭐⭐⭐☆</p>
-                <p>„Sehr schönes Ambiente, das Frühstück war fantastisch!“</p>
-            </div>
-            <div class="bewertung">
-                <p><strong>Felix Berger</strong> ⭐⭐⭐☆☆</p>
-                <p>„Gute Lage, aber das WLAN war etwas langsam.“</p>
-            </div>
+
+    <section class="bewertungen-container">
+
+        <section class="home-bewertungen">
+                <h2>Das sagen unsere Gäste</h2>
+                <div class="home-bewertungen-wrapper">
+                <div class="home-bewertungen-slider">
+                        <?php if ($result->num_rows > 0): ?>
+                            <?php while ($row = $result->fetch_assoc()): ?>
+                                <div class="home-bewertungen-item">
+                                    <p><strong><?php echo htmlspecialchars($row['name']); ?></strong> 
+                                        <?php echo str_repeat("⭐", $row['rating']); ?>
+                                    </p>
+                                    <p>„<?php echo htmlspecialchars($row['kommentar']); ?>“</p>
+                                </div>
+                            <?php endwhile; ?>
+                        <?php else: ?>
+                            <p>Es gibt noch keine Bewertungen.</p>
+                        <?php endif; ?>
+                    </div>
+                </div>
         </section>
+    </section>
         
         <section class="bewertung-abgeben">
             <h2>Teilen Sie Ihre Erfahrung</h2>
-            <form action="bewertung_speichern.php" method="POST" class="form-container">
+            <form action="bewertung_speichern_logik.php" method="POST" class="form-container">
                 <label for="name">Ihr Name:</label>
                 <input type="text" id="name" name="name" required placeholder="Ihr Name">
                 
@@ -63,5 +73,10 @@
     <footer>
         <p>&copy; 2025 FUNREST Hotel | Alle Rechte vorbehalten</p>
     </footer>
+
+    <script src="script.js" defer></script>
+
 </body>
 </html>
+
+<?php $conn->close(); ?>

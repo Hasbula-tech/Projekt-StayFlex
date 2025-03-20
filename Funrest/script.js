@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         bewertungen[index].classList.add("visible");
 
         // Bewege den Slider nach oben
-        slider.style.transform = `translateY(-${index * 100}px)`;
+        slider.style.transform = `translateY(-${index * 105}px)`;
 
         // Nächste Bewertung vorbereiten
         index = (index + 1) % bewertungen.length;

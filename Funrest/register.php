@@ -7,24 +7,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Registrierung</h1>
-        <nav>
-            <ul>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="buchung.php">Zimmer buchen</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="admin.php">Admin</a></li>
-            </ul>
-        </nav>
+    <header>    
+        <h1>Willkommen im FUNREST Hotel</h1>
+        <?php include 'nav.php'; ?>
     </header>
+    
     
     <main>
         <section class="register-formular">
             <h2>Neues Konto erstellen</h2>
             <form action="register_verarbeiten.php" method="POST" class="form-container">
                 <label for="name">Ihr Name:</label>
-                <input type="text" id="name" name="name" required placeholder="Max Mustermann">
+                <input type="text" id="username" name="username" required placeholder="Max Mustermann">
                 
                 <label for="email">E-Mail:</label>
                 <input type="email" id="email" name="email" required placeholder="beispiel@email.com">
