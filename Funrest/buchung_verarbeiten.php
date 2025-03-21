@@ -27,7 +27,7 @@ if (empty($name) || empty($email) || empty($zimmerkategorie) || empty($zimmerTyp
 }
 
 // User-ID herausfinden oder neuen User erstellen
-$sql_user = "SELECT UserID FROM User WHERE Name=? AND Adresse=?";
+$sql_user = "SELECT UserID FROM Gast WHERE Name=? AND Adresse=?";
 $stmt = $conn->prepare($sql_user);
 $stmt->bind_param("ss", $name, $email);
 $stmt->execute();
@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
     $user_id = $user['UserID'];
 } else {
     // Falls User nicht existiert, neuen User anlegen
-    $sql_insert_user = "INSERT INTO User (Name, Adresse) VALUES (?, ?)";
+    $sql_insert_user = "INSERT INTO Gast (Name, Adresse) VALUES (?, ?)";
     $stmt = $conn->prepare($sql_insert_user);
     $stmt->bind_param("ss", $name, $email);
     $stmt->execute();
