@@ -15,14 +15,14 @@ if ($conn->connect_error) {
 // Alle Buchungen aus der Datenbank abrufen
 $sql = "SELECT 
             Buchung.BuchungID, 
-            User.Name, 
-            User.Adresse AS Email, 
+            Gast.Name, 
+            Gast.Adresse AS Email, 
             Zimmer.Kategorie, 
             Zimmer.Typ, 
             Buchung.CheckIn, 
             Buchung.CheckOut 
         FROM Buchung
-        JOIN User ON Buchung.UserID = User.UserID
+        JOIN Gast ON Buchung.UserID = Gast.UserID
         JOIN Zimmer ON Buchung.ZimmerID = Zimmer.ZimmerID
         ORDER BY Buchung.CheckIn ASC";
 
