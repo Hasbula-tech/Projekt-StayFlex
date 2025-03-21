@@ -15,6 +15,8 @@ if ($conn->connect_error) {
 // Alle Buchungen aus der Datenbank abrufen
 $sql = "SELECT 
             Buchung.BuchungID, 
+            Buchung.Rechnungsnummer, 
+            Buchung.Kundennummer,
             Gast.Name, 
             Gast.Adresse AS Email, 
             Zimmer.Kategorie, 
@@ -25,6 +27,7 @@ $sql = "SELECT
         JOIN Gast ON Buchung.UserID = Gast.UserID
         JOIN Zimmer ON Buchung.ZimmerID = Zimmer.ZimmerID
         ORDER BY Buchung.CheckIn ASC";
+
 
 $result = $conn->query($sql);
 ?>
@@ -54,24 +57,28 @@ $result = $conn->query($sql);
         <section class="buchungen-liste">
             <h2>Alle Buchungen</h2>
             <table>
-                <thead>
-                    <tr>
-                        <th>Buchungs-ID</th>
-                        <th>Name</th>
-                        <th>E-Mail</th>
-                        <th>Zimmer</th>
-                        <th>Typ</th>
-                        <th>Anreise</th>
-                        <th>Abreise</th>
-                        <th>Aktionen</th>
-                    </tr>
-                </thead>
+            <thead>
+    <tr>
+        <th>Buchungs-ID</th>
+        <th>Rechnungsnummer</th>
+        <th>Kundennummer</th>
+        <th>Name</th>
+        <th>E-Mail</th>
+        <th>Zimmer</th>
+        <th>Typ</th>
+        <th>Anreise</th>
+        <th>Abreise</th>
+        <th>Aktionen</th>
+    </tr>
+</thead>
                 <tbody>
                     <?php
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
                             echo "<td>" . $row["BuchungID"] . "</td>";
+                            echo "<td>" . $row["Rechnungsnummer"] . "</td>";
+                            echo "<td>" . $row["Kundennummer"] . "</td>";
                             echo "<td>" . $row["Name"] . "</td>";
                             echo "<td>" . $row["Email"] . "</td>";
                             echo "<td>" . $row["Kategorie"] . "</td>";
@@ -80,6 +87,7 @@ $result = $conn->query($sql);
                             echo "<td>" . $row["CheckOut"] . "</td>";
                             echo "<td><a href='buchung_loeschen.php?id=" . $row["BuchungID"] . "' class='delete-button'>Löschen</a></td>";
                             echo "</tr>";
+
                         }
                     } else {
                         echo "<tr><td colspan='8'>Keine Buchungen gefunden.</td></tr>";

@@ -481,10 +481,14 @@ tbody tr:last-child {
     vertical-align: middle;
 }
 
-.input-geaendert {
-    border: 2px solid #f1c40f;
-    background-color: #fff9db;
-    transition: all 0.3s ease;
+.input-feld {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
 

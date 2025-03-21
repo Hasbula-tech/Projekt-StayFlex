@@ -19,6 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+    if (data.success) {
+        generateRechnungPDF(data);
+    
+        // 🟢 Kalender neu aktualisieren nach erfolgreicher Buchung
+        if (typeof ladeBelegteTage === "function") {
+            ladeBelegteTage();
+        }
+    }
+    
 });
 
 function generateRechnungPDF(data) {
@@ -58,30 +67,26 @@ function generateContent(doc, data) {
     doc.text("E-Mail: info@funrest-hotel.com", 15, 74);
     doc.text("Telefon: +49 123 456789", 15, 82);
 
-    // 📌 **Dynamische Rechnungsnummer & Kundennummer**
-    const rechnungsnummer = Math.floor(Math.random() * 900000) + 100000;
-    const kundennummer = Math.floor(Math.random() * 9000) + 1000;
-
     doc.setFontSize(14);
-    doc.text(`Rechnungsnummer: #${rechnungsnummer}`, 140, 50);
+    doc.text(`Rechnungsnummer: #${data.rechnungsnummer}`, 140, 50);
     doc.text(`Rechnungsdatum: ${new Date().toLocaleDateString()}`, 140, 60);
-    doc.text(`Kundennummer: ${kundennummer}`, 140, 70);
+    doc.text(`Kundennummer: ${data.kundennummer}`, 140, 70);
 
     // 👤 **Kundendetails**
     doc.setFont("helvetica", "bold");
     doc.text("Rechnung an:", 15, 100);
     doc.setFont("helvetica", "normal");
     doc.text(`${data.name}`, 15, 108);
-    doc.text(`${data.email || "Keine E-Mail angegeben"}`, 15, 116);
-    doc.text(`Zimmerkategorie: ${data.zimmer}`, 15, 124);
+    doc.text(`${data.adresse || "Keine Adresse angegeben"}`, 15, 116);
+    doc.text(`${data.email || "Keine E-Mail angegeben"}`, 15, 124);
 
     // 📋 **Tabelle mit Buchungsdetails**
     doc.autoTable({
         startY: 140,
-        head: [["Buchungszeitraum", "Anreise", "Abreise", "Tage", "Kosten (€)"]],
+        head: [["Zimmerkategorie", "Anreise", "Abreise", "Tage", "Kosten (€)"]],
         body: [
             [
-                `${data.buchungszeitraum}`, 
+                `${data.zimmer}`, 
                 data.anreise, 
                 data.abreise, 
                 `${tage} Nächte`, 

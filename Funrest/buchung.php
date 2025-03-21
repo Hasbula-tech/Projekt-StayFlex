@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -16,12 +24,6 @@
         <section class="buchung-formular">
             <h2>Buchen Sie Ihr Zimmer</h2>
             <form action="buchung_verarbeiten.php" method="POST" class="form-container">
-                <label for="name">Ihr Name:</label>
-                <input type="text" id="name" name="name" required placeholder="Max Mustermann">
-                
-                <label for="email">Ihre E-Mail:</label>
-                <input type="email" id="email" name="email" required placeholder="beispiel@email.com">
-                
                 <label for="zimmerTyp">Zimmerkategorie:</label>
                 <select id="zimmerTyp" name="zimmerTyp" class="select-style">
                     <option value="luxus">Luxus</option>
