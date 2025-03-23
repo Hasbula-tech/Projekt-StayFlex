@@ -1,17 +1,6 @@
 <?php
 // Datenbankverbindung herstellen
-$servername = "localhost";
-$username = "root";
-$password = "admin";
-$dbname = "funrest";
-
-$conn = new mysqli($servername, $username, $password, $dbname, 3306);
-
-// Fehlerprüfung
-if ($conn->connect_error) {
-    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
-}
-
+include 'db.php';
 // Buchung löschen, wenn ID vorhanden ist
 if (isset($_GET['id'])) {
     $buchung_id = intval($_GET['id']);

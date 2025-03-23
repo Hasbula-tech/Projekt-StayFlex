@@ -665,3 +665,19 @@ footer {
         font-size: 16px;
     }
 }
+
+
+.stammgast-stern {
+    color: gold;
+    font-size: 1.2em;
+    margin-left: 5px;
+    text-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 15px orange;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.stammgast-stern:hover {
+    transform: scale(1.2);
+    text-shadow: 0 0 10px gold, 0 0 20px orange, 0 0 30px yellow;
+    cursor: default;
+}
+

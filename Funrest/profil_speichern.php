@@ -9,30 +9,38 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Daten absichern
-$name = trim($_POST['name']);
-$adresse = trim($_POST['adresse']);
-$geschlecht = $_POST['geschlecht'] ?? null;
+// Daten aus dem Formular holen
+$name         = trim($_POST['name']);
+$strasse      = trim($_POST['strasse']);
+$hausnummer   = trim($_POST['hausnummer']);
+$plz          = trim($_POST['plz']);
+$ort          = trim($_POST['ort']);
+$geschlecht   = $_POST['geschlecht'] ?? null;
 $geburtsdatum = $_POST['geburtsdatum'] ?: null;
-$StammUser = isset($_POST['stammUser']) ? 1 : 0;
 
-// Gibt es schon einen Gast-Eintrag?
-$sql_check = "SELECT UserID FROM Gast WHERE LoginID = ?";
+// Prüfen, ob schon ein Datensatz existiert
+$sql_check = "SELECT StammUser FROM gast WHERE LoginID = ?";
 $stmt = $conn->prepare($sql_check);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    // Update
-    $sql = "UPDATE Gast SET Name=?, Adresse=?, Geschlecht=?, Geburtsdatum=?, StammUser=? WHERE LoginID=?";
+    // 🛠️ Update: bestehender Eintrag → StammUser behalten
+    $row = $result->fetch_assoc();
+    $stammUser = $row['StammUser'];
+
+    $sql = "UPDATE gast 
+            SET Name=?, Strasse=?, Hausnummer=?, PLZ=?, Ort=?, Geschlecht=?, Geburtsdatum=?, StammUser=?
+            WHERE LoginID=?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssii", $name, $adresse, $geschlecht, $geburtsdatum, $StammUser, $user_id);
+    $stmt->bind_param("sssssssii", $name, $strasse, $hausnummer, $plz, $ort, $geschlecht, $geburtsdatum, $stammUser, $user_id);
 } else {
-    // Neu einfügen
-    $sql = "INSERT INTO Gast (Name, Adresse, Geschlecht, Geburtsdatum, StammUser, LoginID) VALUES (?, ?, ?, ?, ?, ?)";
+    // ➕ Neuer Eintrag → StammUser standardmäßig auf 0
+    $sql = "INSERT INTO gast (Name, Strasse, Hausnummer, PLZ, Ort, Geschlecht, Geburtsdatum, StammUser, LoginID) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, 0, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssii", $name, $adresse, $geschlecht, $geburtsdatum, $StammUser, $user_id);
+    $stmt->bind_param("sssssssi", $name, $strasse, $hausnummer, $plz, $ort, $geschlecht, $geburtsdatum, $user_id);
 }
 
 $stmt->execute();

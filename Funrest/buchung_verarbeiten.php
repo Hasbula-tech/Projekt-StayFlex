@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'db.php';
 
 // Sicherheitsprüfung
 if (!isset($_SESSION['user_id'])) {
@@ -8,17 +9,6 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
-
-// DB-Verbindung
-$servername = "localhost";
-$username = "root";
-$password = "admin";
-$dbname = "funrest";
-
-$conn = new mysqli($servername, $username, $password, $dbname, 3306);
-if ($conn->connect_error) {
-    die(json_encode(["success" => false, "message" => "Verbindung fehlgeschlagen"]));
-}
 
 // Nutzerdaten abrufen
 $sql_user = "SELECT u.email, g.Name, g.Adresse, g.Geschlecht 

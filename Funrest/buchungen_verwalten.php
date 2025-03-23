@@ -1,17 +1,5 @@
 <?php
-// Datenbankverbindung herstellen
-$servername = "localhost";
-$username = "root"; // Dein MySQL-User
-$password = "admin"; // Falls du ein Passwort hast, hier eintragen
-$dbname = "funrest"; // Deine Datenbank
-
-$conn = new mysqli($servername, $username, $password, $dbname, 3306);
-
-// Fehlerprüfung
-if ($conn->connect_error) {
-    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
-}
-
+include 'db.php';
 // Alle Buchungen aus der Datenbank abrufen
 $sql = "SELECT 
             Buchung.BuchungID, 

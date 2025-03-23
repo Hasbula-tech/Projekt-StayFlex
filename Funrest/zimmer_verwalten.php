@@ -1,14 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "admin";
-$dbname = "funrest";
-
-// Verbindung zur Datenbank aufbauen
-$conn = new mysqli($servername, $username, $password, $dbname, 3306);
-if ($conn->connect_error) {
-    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
-}
+include 'db.php';
 
 // Zimmer aktualisieren
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
@@ -41,16 +32,9 @@ $result = $conn->query("SELECT * FROM Zimmer");
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Zimmer verwalten</h1>
-        <nav>
-            <ul>
-                <li><a href="home.php">Home</a></li>
-                <li><a href="buchung.php">Zimmer buchen</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="admin.php">Admin</a></li>
-            </ul>
-        </nav>
+<header>
+        <h1>Willkommen im FUNREST Hotel</h1>
+        <?php include 'nav.php'; ?>
     </header>
 
     <main>
